@@ -30,7 +30,7 @@ class NewsArticles:
         response = []
 
         for newsArticle in cls.all_NewsArticles:
-            if newsArticle.movie_id == id:
+            # if newsArticle.movie_id == id:
                 response.append(newsArticle)
 
         return response
