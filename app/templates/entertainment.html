@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% import 'macros.html' as macro%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+    {% for news in news_articles %}
+        <div class="col-md-6">
+            <img src="{{news.urlToImage}}" class="card-img-top, img-responsive" alt="{{news.title}}">
+        </div>
+        <div class="col-md-6">
+            <h4>{{news.source.name}}</h4>
+            <p>{{news.title}}</p>
+            <p>Published On {{news.publishedAt}} by {{news.author}}</p>
+            <p> {{news.description}} </p>
+            <a href="{{news.url}}" target="_blank"><button type="button" class="btn btn-success">View Article</button></a>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{%endblock%}
