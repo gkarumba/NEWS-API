@@ -12,10 +12,10 @@ def index():
     title = 'Hello World'
     message = 'Home - Welcome to The best Online News Source'
     search_category = request.args.get('news_name')
-    if search_news:
-        return redirect(url_for('main.search',news_name = search_category))
-    else:
-        return render_template('index.html',message = message, title = title)
+    # if search_news:
+    #     return redirect(url_for('main.search',news_name = search_category))
+    # else:
+    return render_template('index.html',message = message, title = title)
 
 @main.route('/sports')
 def sport():
@@ -42,14 +42,3 @@ def entertainment():
 	'''
 	entertainment = get_news('entertainment')
 	return render_template('entertainment.html',news_articles=entertainment)
-
-@main.route('/search/<news_name>')
-def search(news_name):
-    '''
-    View root page function that returns the search page and its data
-    '''
-    news_article = news_name.split(" ")
-    news_article_format = "+".join(article_list)
-    found_news_articles = search_news(news_article_format)
-    title = f'search results for {news_name}'
-    return render_template('search.html', article= found_news_articles)

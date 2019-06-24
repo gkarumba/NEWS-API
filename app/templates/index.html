@@ -11,39 +11,30 @@
 {% block content %}
 
 <div class="container">
-    <form>
-        <input type="text" name="news_name" placeholder="Search for News" class="form-control">
-        <input type="submit"  value="Submit" class="btn btn-default">
-    </form>
+    <div class="row">
+        <form>
+            <input type="text" name="news_name" class="search" placeholder="Search for News" class="form-control">
+            <input type="submit"  value="Submit" class="btn btn-outline-success">
+        </form>
+    </div>
+    
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><b>Business News</b></h5>
-                    <p class="card-text">Number one source for business news</p>
-                    <a href="/business" class="btn btn-outline-success">View Articles</a>
-                </div>
-            </div>
+        <div class="col-md-4 category-box">
+            <h5><b>Business News</b></h5>
+            <p>Number one source for business news</p>
+            <a href="/business" class="btn btn-outline-success">View Articles</a>
         </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><b>Sports News</b></h5>
-                    <p class="card-text"> Number one source for sports news</p>
-                    <a href="/sports" class="btn btn-outline-success">View Articles</a>
-                </div>
-            </div>
+        <div class="col-md-4 category-box">
+            <h5><b>Sports News</b></h5>
+            <p> Number one source for sports news</p>
+            <a href="/sports" class="btn btn-outline-success">View Articles</a>
         </div>
-        <div class="col-md-4">
-            <div class="card" >
-                <div class="card-body">
-                    <h5 class="card-title"><b>Entertainment News</b></h5>
-                    <p class="card-text">Number one source for entertainment news</p>
-                    <a href="/entertainment" class="btn btn-outline-success">View Articles</a>
-                </div>
-            </div>
+        <div class="col-md-4 category-box">
+            <h5><b>Entertainment News</b></h5>
+            <p>Number one source for entertainment news</p>
+            <a href="/entertainment" class="btn btn-outline-success">View Articles</a>
         </div>
     </div>
 </div>

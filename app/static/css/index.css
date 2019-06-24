@@ -1,0 +1,10 @@
+.category-box {
+    border: solid #222 2px;
+    border-radius: 5px;
+    box-shadow: 5px 10px #888888;
+}
+.news-box {
+    border: solid #222 2px;
+    border-radius: 5px;
+    box-shadow: 5px 10px #888888;
+}
