@@ -39,6 +39,6 @@ def business():
 def entertainment():
 	'''
 	View root page function that returns the entertainment page and its data
-	'''s
+	'''
 	entertainment = get_news_article('entertainment')
 	return render_template('entertainment.html',news_articles=entertainment)
