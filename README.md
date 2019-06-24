@@ -37,4 +37,4 @@ gkarumba
 No bugs reported.
 
 # LICENCE
-MIT
+[LICENSE](https://github.com/gkarumba/NEWS-API/blob/master/LICENSE)
