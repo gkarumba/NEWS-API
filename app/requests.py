@@ -11,7 +11,7 @@ def configure_request(app):
     global api_key,news_base_url,news_articles_base_url
     api_key = app.config['NEWS_API_KEY']
     news_base_url = app.config['NEWS_API_BASE_URL']
-    news_articles_base_url = app.config['NEWS_ARTICLES_BASE_URL']
+    news_articles_base_url = app.config['NEWS_ARTICLES_API_BASE_URL']
 
 def news_process_results(news_list):
     '''

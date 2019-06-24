@@ -13,6 +13,6 @@ def index():
     message = 'Home - Welcome to The best Online News Source'
     search_news = request.args.get('news_name')
     if search_news:
-        return redirect(url_for('search',news_name = news_name))
+        return redirect(url_for('search',news_name = search_news))
     else:
         return render_template('index.html',message = message, title = title)

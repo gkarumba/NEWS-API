@@ -19,7 +19,7 @@ class NewsTest(unittest.TestCase):
         self.assertEqual(self.new_News.id, 1)
         self.assertEqual(self.new_News.description, 'Tech in the rise')
         self.assertEqual(self.new_News.name, 'Nation')
-         self.assertEqual(self.new_News.url, 'Nationmedia.co.ke')
+        self.assertEqual(self.new_News.url, 'Nationmedia.co.ke')
         self.assertEqual(self.new_News.category, 'Business')
     
     def test_instance(self):
