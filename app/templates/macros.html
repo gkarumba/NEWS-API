@@ -1,0 +1,12 @@
+{% macro displayNewsList(news_list) %}
+    {% for news in news_list %}
+    <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 news-card">
+        <img src="{{ news.urlToImage }}" alt="{{ news.title }} poster" class="img-responsive">
+        <h3>{{news.source.name}}</h3>
+        <p>{{news.title}}</p>
+        <p>{{news.publishedAt}} by {{news.author}}</p>
+        <p>{{news.description}}</p>
+        <a href="{{news.url}}" target="_blank"><button type="button" class="btn btn-primary">View The Article</button></a>
+    </div>
+    {% endfor %}
+{% endmacro %}
