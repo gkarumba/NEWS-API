@@ -8,12 +8,12 @@ news_base_url = None
 news_articles_base_url = None
 
 def configure_request(app):
-    global api_key,base_url
+    global api_key,news_base_url,news_articles_base_url
     api_key = app.config['NEWS_API_KEY']
     news_base_url = app.config['NEWS_API_BASE_URL']
     news_articles_base_url = app.config['NEWS_ARTICLES_BASE_URL']
 
-def process_results(news_list):
+def news_process_results(news_list):
     '''
     Function  that processes the news result and transform them to a list of Objects
 
@@ -36,7 +36,30 @@ def process_results(news_list):
             
     return news_results
 
+def article_process_results(news_article_list):
+    '''
+    Function  that processes the news article result and transform them to a list of Objects
 
+    Args:
+        news_article_list: A list of dictionaries that contain news details
+
+    Returns :
+        news_article_results: A list of news objects
+    '''
+    news_article_results = []
+    for news_article_item in news_article_list:
+        source = news_article_item.get('source')
+        urlToImage = news_article_item.get('urlToImage')
+        title = news_article_item.get('title')
+        description = news_article_item.get('description')
+        publishedAt = news_article_item.get('publishedAt')
+        url = news_article_item.get('url')
+
+        if title:
+            news_article_object = NewsArticles(id,source, urlToImage, author,title,description,publishedAt,url)
+            news_article_results.append(news_article_object)
+            
+    return news_article_results
 
 def get_news(category):
     '''
@@ -50,7 +73,7 @@ def get_news(category):
         
         if get_news_response['sources']:
             news_results_list = get_news_response['sources']
-            news_results = process_results(news_results_list)
+            news_results = news_process_results(news_results_list)
             
     return new_results
 
@@ -62,30 +85,23 @@ def get_news_article(id):
         news_article_response = json.loads(news_article_data)
 
         news_article = None
-        if news_article_response:
-            id = news_article_response.get('id')
-            title = news_article_response.get('original_title')
-            overview = news_article_response.get('overview')
-            poster = news_article_response.get('poster_path')
-            vote_average = news_article_response.get('vote_average')
-            vote_count = news_article_response.get('vote_count')
+        if news_article_response['articles']:
+            news_article_result_list = news_article_data['articles']
+            news_article_results = article_process_results(news_article_result_list)
+    return news_article_results
 
-            news_article = NewsArticles(id,title,overview,poster,vote_average,vote_count)
+def search_news(news_name):
+    search_news_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'.format(news_name,api_key)
+    with urllib.request.urlopen(search_news_url) as url:
+        search_news_data = url.read()
+        search_news_response = json.loads(search_news_data)
 
-    return movie_object
+        search_news_results = None
+        if search_news_response['articles']:
+            search_news_list = search_news_response['articles']
+            search_news_results = article_process_results(search_news_list)
 
-def search_movie(movie_name):
-    search_movie_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,movie_name)
-    with urllib.request.urlopen(search_movie_url) as url:
-        search_movie_data = url.read()
-        search_movie_response = json.loads(search_movie_data)
+    return search_news_results
 
-        search_movie_results = None
-        if search_movie_response['results']:
-            search_movie_list = search_movie_response['results']
-            search_movie_results = process_results(search_movie_list)
 
-    return search_movie_results
-
-Movie = movie.Movie
 
